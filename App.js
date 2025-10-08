@@ -63,8 +63,8 @@ export default function App() {
 
         {/* Politics Page */}
         <Stack.Screen name="Politics" component={RajakiyamComponent} />
-                <Stack.Screen name="PostDetails" component={PostDetails} />
-                <Stack.Screen name="Gallery" component={GalleryScreen} />
+        <Stack.Screen name="PostDetails" component={PostDetails} />
+        <Stack.Screen name="Gallery" component={GalleryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
