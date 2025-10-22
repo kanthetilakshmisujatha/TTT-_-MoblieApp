@@ -34,8 +34,8 @@ const Collections = () => {
   return (
     <View style={styles.container}>
       {/* ===== Movie Schedules Heading ===== */}
-      <View style={styles.headerRow}>
-        <Text style={styles.header}>Movie Schedules</Text>
+          <View style={styles.headerRow}>
+        <Text style={styles.header}>సినిమా షెడ్యూల్స్</Text>
         <View style={styles.dot} />
         <View style={styles.line} />
       </View>
@@ -45,66 +45,65 @@ const Collections = () => {
         <TouchableOpacity
           style={[styles.tab, activeTab === 'Movies' && styles.activeTab]}
           onPress={() => setActiveTab('Movies')}>
-          <Text style={[styles.tabText, activeTab === 'Movies' ? styles.activeTabText : styles.inactiveTabText]}>Movies</Text>
+          <Text style={[styles.tabText, activeTab === 'Movies' ? styles.activeTabText : styles.inactiveTabText]}>సినిమాలు</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tab, activeTab === 'OTT' && styles.activeTab]}
           onPress={() => setActiveTab('OTT')}>
-          <Text style={[styles.tabText, activeTab === 'OTT' ? styles.activeTabText : styles.inactiveTabText]}>OTT</Text>
+          <Text style={[styles.tabText, activeTab === 'OTT' ? styles.activeTabText : styles.inactiveTabText]}>ఓటీటీ</Text>
         </TouchableOpacity>
       </View>
 
       {activeTab === 'Movies' && (
         <FlatList
-          data={movieData}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-          style={styles.table}
+          // ...existing code...
           ListHeaderComponent={
             <View style={styles.row}>
-              <Text style={styles.headerText}>Name</Text>
-              <Text style={styles.headerText}>Release Date</Text>
+              <Text style={styles.headerText}>పేరు</Text>
+              <Text style={styles.headerText}>విడుదల తేదీ</Text>
             </View>
           }
         />
       )}
 
-      {/* ===== Movie Collections Heading ===== */}
+   {/* Movie Collections Section */}
       <View style={styles.headerRow}>
-        <Text style={styles.header}>Movie Collections</Text>
+        <Text style={styles.header}>సినిమా కలెక్షన్స్</Text>
         <View style={styles.dot} />
         <View style={styles.line} />
       </View>
-
-      {/* Collections Tabs */}
+  {/* Collections Tabs */}
       <View style={styles.tabContainer}>
         <TouchableOpacity
           style={[styles.tab, activeCollectionTab === '1st day TS&AP' && styles.activeTab]}
           onPress={() => setActiveCollectionTab('1st day TS&AP')}>
-          <Text style={[styles.tabText, activeCollectionTab === '1st day TS&AP' ? styles.activeTabText : styles.inactiveTabText]}>1st day TS&AP</Text>
+          <Text style={[styles.tabText, activeCollectionTab === '1st day TS&AP' ? styles.activeTabText : styles.inactiveTabText]}>మొదటి రోజు తెలంగాణ & ఆంధ్ర</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tab, activeCollectionTab === '1st day WW' && styles.activeTab]}
           onPress={() => setActiveCollectionTab('1st day WW')}>
-          <Text style={[styles.tabText, activeCollectionTab === '1st day WW' ? styles.activeTabText : styles.inactiveTabText]}>1st day WW</Text>
+          <Text style={[styles.tabText, activeCollectionTab === '1st day WW' ? styles.activeTabText : styles.inactiveTabText]}>మొదటి రోజు ప్రపంచవ్యాప్తంగా</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tab, activeCollectionTab === 'Closing WW' && styles.activeTab]}
           onPress={() => setActiveCollectionTab('Closing WW')}>
-          <Text style={[styles.tabText, activeCollectionTab === 'Closing WW' ? styles.activeTabText : styles.inactiveTabText]}>Closing WW</Text>
+          <Text style={[styles.tabText, activeCollectionTab === 'Closing WW' ? styles.activeTabText : styles.inactiveTabText]}>ఫైనల్ కలెక్షన్స్</Text>
         </TouchableOpacity>
       </View>
+
 
       <FlatList
         data={collectionData[activeCollectionTab]}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         style={[styles.table, styles.collectionTable]}
-        ListHeaderComponent={
+      
+         ListHeaderComponent={
           <View style={styles.row}>
-            <Text style={styles.headerText}>Name</Text>
-            <Text style={styles.headerText}>Collection</Text>
+            <Text style={styles.headerText}>పేరు</Text>
+            <Text style={styles.headerText}>కలెక్షన్</Text>
           </View>
+        
         }
       />
     </View>
@@ -135,14 +134,14 @@ const styles = StyleSheet.create({
   },
   tabContainer: { flexDirection: 'row', marginBottom: 10 },
   tab: { flex: 1, padding: 10, backgroundColor: '#f0f0f0', alignItems: 'center' },
-  activeTab: { backgroundColor: 'red' },
+  activeTab: { backgroundColor: '#e94560' },
   tabText: { color: '#000' },
   activeTabText: { color: '#fff' },
   inactiveTabText: { color: '#000' },
   table: { borderWidth: 1, borderColor: '#ccc' },
   collectionTable: { marginTop: 20 },
   row: { flexDirection: 'row', borderBottomWidth: 1, borderColor: '#ccc' },
-  headerText: { flex: 1, fontWeight: 'bold', padding: 10, color: 'red' },
+  headerText: { flex: 1, fontWeight: 'bold', padding: 10, color: '#e94560' },
   cell: { flex: 1, padding: 10 },
 });
 

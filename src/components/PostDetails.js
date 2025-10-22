@@ -1,10 +1,51 @@
 import React from "react";
-import { View, Text, Image, ScrollView, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, FlatList } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function PostDetails({ route }) {
+export default function PostDetails({ route, language }) {
   // navigation నుండి వచ్చిన params తీసుకోవడం
   const { title, date, image, author } = route.params || {};
+
+  // Bilingual texts
+  const texts = {
+    recommended: language === "telugu" ? "సిఫార్సు చేసిన పోస్టులు" : "Recommended Posts",
+  };
+
+  // Dummy recommended posts
+  const recommendedPosts = [
+    {
+      id: 1,
+      title: language === "telugu" ? "పోలవరం ప్రాజెక్టు గురించి మరిన్ని వివరాలు" : "More Details on Polavaram Project",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop",
+      snippet: language === "telugu" ? "పోలవరం ప్రాజెక్టు చరిత్ర మరియు ప్రాముఖ్యత..." : "History and importance of Polavaram Project...",
+      date: "Oct 10, 2025"
+    },
+    {
+      id: 2,
+      title: language === "telugu" ? "గోదావరి వరదల ప్రభావాలు" : "Impacts of Godavari Floods",
+      image: "https://images.unsplash.com/photo-1559818868-0eceae8819a6?w=300&h=200&fit=crop",
+      snippet: language === "telugu" ? "వరదలు ఆంధ్రప్రదేశ్ ప్రజలపై చూపు..." : "How floods affect Andhra Pradesh people...",
+      date: "Oct 9, 2025"
+    },
+    {
+      id: 3,
+      title: language === "telugu" ? "ఆంధ్రప్రదేశ్ ఇరిగేషన్ ప్రాజెక్టులు" : "Andhra Pradesh Irrigation Projects",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
+      snippet: language === "telugu" ? "ఇరిగేషన్ ప్రాజెక్టుల పరిణామం..." : "Development of irrigation projects...",
+      date: "Oct 8, 2025"
+    },
+  ];
+
+  const renderPostItem = ({ item }) => (
+    <TouchableOpacity style={styles.postItem}>
+      {item.image && <Image source={{ uri: item.image }} style={styles.postImage} />}
+      <View style={styles.postInfo}>
+        <Text style={styles.postTitle} numberOfLines={2}>{item.title}</Text>
+        <Text style={styles.postSnippet} numberOfLines={2}>{item.snippet}</Text>
+        <Text style={styles.postDate}>{item.date}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 
   return (
     <ScrollView style={styles.container}>
@@ -71,7 +112,7 @@ export default function PostDetails({ route }) {
       {/* Tags */}
       <Text style={styles.subHeading}>Tags</Text>
       <View style={styles.tagsRow}>
-        {["పోలవరం","పోలవరంసమస్యలు","గోదావరిసనీటి","కాఫర్‌డ్యామ్","వరదముప్పు","ఆంధ్రప్రదేశ్"].map((tag, i) => (
+        {["పోలవరం","పోలవంసమస్యలు","గోదావరిసనీటి","కాఫర్‌డ్యామ్","వరదముప్పు","ఆంధ్రప్రదేశ్"].map((tag, i) => (
           <Text key={i} style={styles.tag}>{tag}</Text>
         ))}
       </View>
@@ -84,6 +125,18 @@ export default function PostDetails({ route }) {
         <Text style={styles.social}><FontAwesome name="youtube-play" size={16} color="#ff0000" /> YouTube</Text>
         <Text style={styles.social}><FontAwesome name="twitter" size={16} color="#1da1f2" /> Twitter</Text>
       </View>
+
+      {/* Recommended Posts */}
+      <Text style={styles.subHeading}>{texts.recommended}</Text>
+      <FlatList
+        data={recommendedPosts}
+        renderItem={renderPostItem}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        columnWrapperStyle={styles.row}
+        style={styles.videoList}
+      />
     </ScrollView>
   );
 }
@@ -106,9 +159,53 @@ const styles = StyleSheet.create({
   commentInput: { borderWidth: 1, borderColor: "#ccc", borderRadius: 8, padding: 10, marginBottom: 10 },
   loginBtn: { backgroundColor: "#007bff", padding: 10, borderRadius: 8, alignSelf: "flex-start" },
   loginText: { color: "#fff", fontWeight: "bold" },
-  subHeading: { fontSize: 16, fontWeight: "bold", marginVertical: 10 },
+  subHeading: { fontSize: 16, fontWeight: "bold", marginVertical: 10, color: "#e26512" },
   tagsRow: { flexDirection: "row", flexWrap: "wrap", marginBottom: 15 },
   tag: { backgroundColor: "#f1f1f1", paddingHorizontal: 10, paddingVertical: 5, borderRadius: 8, marginRight: 6, marginBottom: 6, fontSize: 13 },
   socialRow: { flexDirection: "row", flexWrap: "wrap" },
   social: { backgroundColor: "#f9f9f9", padding: 8, borderRadius: 8, marginRight: 6, marginBottom: 6, fontSize: 14 },
+  videoList: { marginBottom: 20 },
+  row: {
+    justifyContent: "space-between",
+  },
+  postItem: { 
+    width: "48%",
+    marginBottom: 15, 
+    backgroundColor: "#fff", 
+    borderRadius: 15, 
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
+  },
+  postImage: { 
+    width: "100%", 
+    height: 100, 
+    resizeMode: "cover",
+  },
+  postInfo: { 
+    padding: 10,
+    justifyContent: "center",
+  },
+  postTitle: { 
+    fontSize: 14, 
+    color: "#333", 
+    fontWeight: "600",
+    lineHeight: 18,
+    marginBottom: 4,
+  },
+  postSnippet: { 
+    fontSize: 12, 
+    color: "#666", 
+    lineHeight: 16,
+    marginBottom: 4,
+  },
+  postDate: {
+    fontSize: 11,
+    color: "#999",
+  },
 });

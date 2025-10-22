@@ -1,191 +1,3 @@
-// import React, { useState } from "react";
-// import {
-//   View,
-//   Text,
-//   TouchableOpacity,
-//   Image,
-//   StyleSheet,
-//   ScrollView,
-//   TextInput,
-//   Platform,
-//   Modal,
-//   Pressable,
-// } from "react-native";
-// import { FontAwesome } from "@expo/vector-icons";
-
-// const Navbar = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   const [searchText, setSearchText] = useState("");
-//   const [activeTab, setActiveTab] = useState("Home");
-//   const [hoveredTab, setHoveredTab] = useState(null);
-
-//   const menuItems = [
-//     { name: "హోమ్", path: "Home" },
-//     { name: "రాజకీయం", path: "Politics" },
-//     { name: "సినిమా", path: "Movies" },
-//     { name: "గాసిప్స్", path: "Gossips" },
-//     { name: "రివ్యూస్", path: "Reviews" },
-//     { name: "గ్యాలరీ", path: "Gallery" },
-//     { name: "వీడియోలు", path: "Videos" },
-//     { name: "ఓటిటి", path: "OTT" },
-//     { name: "క్రీడలు", path: "Sports" },
-//     { name: "ENGLISH", path: "English" },
-//     { name: "Login", path: "Login" },
-//   ];
-
-//   const handleNavigation = (path) => {
-//     setActiveTab(path);
-//     setMenuOpen(false);
-//     alert(`Navigate to ${path}`);
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       {/* Top Bar */}
-//       <View style={styles.topBar}>
-//         <TouchableOpacity onPress={() => alert("Go Home")}>
-//           <Image
-//             source={require('../assests/ttt.jpg')} // Local image
-//             style={styles.logo}
-//           />
-//         </TouchableOpacity>
-
-//         <TouchableOpacity onPress={() => setMenuOpen(true)}>
-//           <FontAwesome name="bars" size={28} color="#000000ff" />
-//         </TouchableOpacity>
-//       </View>
-
-//       {/* Menu Modal */}
-//       <Modal visible={menuOpen} animationType="slide" transparent={true}>
-//         <Pressable
-//           style={styles.modalContainer}
-//           onPress={() => setMenuOpen(false)}
-//         >
-//           <View style={styles.modalContent}>
-//             <ScrollView>
-//               {menuItems.map((item, index) => (
-//                 <Pressable
-//                   key={index}
-//                   onPress={() => handleNavigation(item.path)}
-//                   onPressIn={() => setHoveredTab(item.path)}
-//                   onPressOut={() => setHoveredTab(null)}
-//                   style={styles.modalItem}
-//                 >
-//                   <Text
-//                     style={[
-//                       styles.menuText,
-//                       (activeTab === item.path || hoveredTab === item.path) &&
-//                         styles.hoveredText,
-//                     ]}
-//                   >
-//                     {item.name}
-//                   </Text>
-//                 </Pressable>
-//               ))}
-
-//               {/* Search Box */}
-//               <View style={styles.searchBox}>
-//                 <TextInput
-//                   style={styles.searchInput}
-//                   placeholder="Search..."
-//                   placeholderTextColor="#ccc"
-//                   value={searchText}
-//                   onChangeText={setSearchText}
-//                 />
-//                 <TouchableOpacity
-//                   onPress={() => {
-//                     alert(searchText ? `Searching for "${searchText}"` : "Search something!");
-//                     setSearchText("");
-//                     setMenuOpen(false);
-//                   }}
-//                   style={styles.searchBtn}
-//                 >
-//                   <Text style={{ color: "#fff", fontWeight: "bold" }}>Search</Text>
-//                 </TouchableOpacity>
-//               </View>
-
-//               {/* Close Button */}
-//               <TouchableOpacity
-//                 onPress={() => setMenuOpen(false)}
-//                 style={styles.closeBtn}
-//               >
-//                 <Text style={{ color: "#fff", fontWeight: "bold" }}>Close</Text>
-//               </TouchableOpacity>
-//             </ScrollView>
-//           </View>
-//         </Pressable>
-//       </Modal>
-//     </View>
-//   );
-// };
-
-// export default Navbar;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: "#ffffffff",
-//     paddingTop: Platform.OS === "ios" ? 80 : 40,
-//     paddingHorizontal: 10,
-//   },
-//   topBar: {
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//   },
-//   logo: { width: 150, height: 60, resizeMode: "contain" },
-//   modalContainer: {
-//     flex: 1,
-//     backgroundColor: "rgba(0,0,0,0.5)",
-//     justifyContent: "flex-start",
-//   },
-//   modalContent: {
-//     backgroundColor: "#000",
-//     width: "80%",
-//     paddingVertical: 30,
-//     paddingHorizontal: 20,
-//     alignSelf: "flex-end", // slides from right
-//     height: "100%",
-//   },
-//   modalItem: {
-//     paddingVertical: 15,
-//   },
-//   menuText: {
-//     fontSize: 18,
-//     color: "#fff",
-//   },
-//   hoveredText: {
-//     color: "#e26512ff", // Orange color on hover
-//   },
-//   searchBox: {
-//     flexDirection: "row",
-//     marginTop: 20,
-//     borderWidth: 1,
-//     borderColor: "#e26512ff",
-//     borderRadius: 5,
-//     overflow: "hidden",
-//   },
-//   searchInput: {
-//     flex: 1,
-//     paddingHorizontal: 10,
-//     color: "#fff",
-//   },
-//   searchBtn: {
-//     backgroundColor: "#e26512ff",
-//     padding: 10,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     marginLeft: 5, // space between input and button
-//     borderRadius: 5,
-//   },
-//   closeBtn: {
-//     marginTop: 20, // space between search box and close button
-//     alignItems: "center",
-//     padding: 10,
-//     backgroundColor: "#e26512ff",
-//     borderRadius: 5,
-//   },
-// });
-
 import React, { useState } from "react";
 import {
   View,
@@ -196,7 +8,7 @@ import {
   ScrollView,
   Platform,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const TopNav = ({ language, setLanguage }) => {
@@ -210,15 +22,22 @@ const TopNav = ({ language, setLanguage }) => {
     <View style={styles.topContainer}>
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
-          <Image
-            source={require("../assests/ttt.jpg")}
-            style={styles.logo}
-          />
+          <Image source={require("../assests/ttt.jpg")} style={styles.logo} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={toggleLanguage} style={styles.toggleBtn}>
+        <TouchableOpacity 
+          onPress={toggleLanguage} 
+          style={styles.toggleBtn}
+          activeOpacity={0.8}
+        >
+          <MaterialIcons 
+            name={language === "telugu" ? "translate" : "language"} 
+            size={20} 
+            color="#fff" 
+            style={styles.toggleIcon}
+          />
           <Text style={styles.toggleText}>
-            {language === "telugu" ? "EN" : "తె"}
+            {language === "telugu" ? "English" : "తెలుగు"}
           </Text>
         </TouchableOpacity>
       </View>
@@ -228,23 +47,74 @@ const TopNav = ({ language, setLanguage }) => {
 
 const MoreScreen = ({ language }) => {
   const navigation = useNavigation();
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-  const getMenuItems = (lang) => [
-    { key: "politics", path: "Politics", nameTel: "రాజకీయం", nameEn: "Politics", image: require("../assests/policts.webp") },
-    { key: "movies", path: "Movies", nameTel: "సినిమా", nameEn: "Movies", image: require("../assests/movie.jpg") },
-    { key: "gossips", path: "Gossips", nameTel: "గాసిప్స్", nameEn: "Gossips", image: require("../assests/gossips.avif") },
-    { key: "reviews", path: "Reviews", nameTel: "రివ్యూస్", nameEn: "Reviews", image: require("../assests/revie.png") },
-    { key: "gallery", path: "Gallery", nameTel: "గ్యాలరీ", nameEn: "Gallery", image: require("../assests/gallery.webp") },
-    { key: "videos", path: "Videos", nameTel: "వీడియోలు", nameEn: "Videos", image: require("../assests/videos.jpg") },
-    { key: "ott", path: "OTT", nameTel: "ఓటిటి", nameEn: "OTT", image: require("../assests/ott.jpg") },
-    { key: "sports", path: "Sports", nameTel: "క్రీడలు", nameEn: "Sports", image: require("../assests/sports.jpg") },
+  const menuItems = [
+    {
+      key: "politics",
+      path: "Politics",
+      nameTel: "రాజకీయం",
+      nameEn: "Politics",
+      image: require("../assests/policts.webp"),
+      icon: "gavel"
+    },
+    {
+      key: "movies",
+      path: "Movies", 
+      nameTel: "సినిమా",
+      nameEn: "Movies",
+      image: require("../assests/movie.jpg"),
+      icon: "movie"
+    },
+    {
+      key: "gossips",
+      path: "Gossips",
+      nameTel: "గాసిప్స్",
+      nameEn: "Gossips", 
+      image: require("../assests/gossips.avif"),
+      icon: "chat"
+    },
+    {
+      key: "reviews",
+      path: "Reviews",
+      nameTel: "రివ్యూస్",
+      nameEn: "Reviews",
+      image: require("../assests/revie.png"),
+      icon: "rate-review"
+    },
+    {
+      key: "gallery", 
+      path: "Gallery",
+      nameTel: "గ్యాలరీ",
+      nameEn: "Gallery",
+      image: require("../assests/gallery.webp"),
+      icon: "photo-library"
+    },
+    {
+      key: "videos",
+      path: "Videos",
+      nameTel: "వీడియోలు",
+      nameEn: "Videos",
+      image: require("../assests/videos.jpg"),
+      icon: "video-collection"
+    },
+    {
+      key: "ott",
+      path: "OTT",
+      nameTel: "ఓటిటి",
+      nameEn: "OTT",
+      image: require("../assests/ott.jpg"),
+      icon: "live-tv"
+    },
+    {
+      key: "sports",
+      path: "Sports",
+      nameTel: "క్రీడలు", 
+      nameEn: "Sports",
+      image: require("../assests/sports.jpg"),
+      icon: "sports"
+    }
   ];
-
-  const menuItems = getMenuItems(language);
-
-  const handleNavigation = (path) => {
-    navigation.navigate(path);
-  };
 
   return (
     <ScrollView style={styles.moreScreenContainer}>
@@ -252,14 +122,45 @@ const MoreScreen = ({ language }) => {
         {menuItems.map((item, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => handleNavigation(item.path)}
-            style={styles.card}
+            onPress={() => navigation.navigate(item.path)}
+            style={[
+              styles.card,
+              hoveredCard === item.key && styles.cardHovered
+            ]}
+            activeOpacity={0.7}
+            onPressIn={() => setHoveredCard(item.key)}
+            onPressOut={() => setHoveredCard(null)}
           >
             <Image source={item.image} style={styles.cardImage} />
-            <View style={styles.overlay} />
-            <Text style={styles.cardText}>
-              {language === "telugu" ? item.nameTel : item.nameEn}
-            </Text>
+            <View style={[
+              styles.overlay,
+              hoveredCard === item.key && styles.overlayHovered
+            ]} />
+            <View style={styles.cardContent}>
+              <View style={styles.iconContainer}>
+                <MaterialIcons 
+                  name={item.icon} 
+                  size={28} 
+                  color="#fff"
+                  style={styles.cardIcon}
+                />
+              </View>
+              <Text style={styles.cardTitle}>
+                {language === "telugu" ? item.nameTel : item.nameEn}
+              </Text>
+              <View style={styles.cardDivider} />
+              <View style={styles.subtitleContainer}>
+                <Text style={styles.cardSubtitle}>
+                  {language === "telugu" ? "మరిన్ని చూడండి" : "View More"}
+                </Text>
+                <MaterialIcons 
+                  name="arrow-forward" 
+                  size={16} 
+                  color="#e94560" 
+                  style={styles.arrowIcon}
+                />
+              </View>
+            </View>
           </TouchableOpacity>
         ))}
       </View>
@@ -267,123 +168,230 @@ const MoreScreen = ({ language }) => {
   );
 };
 
-const BottomNav = ({ language, setLanguage }) => {
+const BottomNav = ({ language }) => {
   const navigation = useNavigation();
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [activeIcon, setActiveIcon] = useState(null);
+
+  const getRouteByLabel = (label) => {
+    if (label === "హోమ్" || label === "Home") return "Main";
+    if (label === "మరిన్ని" || label === "More") return "More";
+    if (label === "శోధన" || label === "Search") return "Search";
+    if (label === "ప్రొఫైల్" || label === "Profile") return "Profile";
+    return "Main";
+  };
+
+  const bottomItems = [
+    { icon: "home", label: language === "telugu" ? "హోమ్" : "Home" },
+    { icon: "category", label: language === "telugu" ? "మరిన్ని" : "More" },
+    { icon: "search", label: language === "telugu" ? "శోధన" : "Search" },
+    { icon: "person", label: language === "telugu" ? "ప్రొఫైల్" : "Profile" }
+  ];
+
+  const handleIconPress = (index, label) => {
+    setActiveIcon(index === 0 && activeIcon !== 0 ? 0 : null);
+    navigation.navigate(getRouteByLabel(label));
+  };
 
   return (
     <View style={styles.bottomContainer}>
       <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.iconBtn} onPress={() => navigation.navigate("Main")}>
-          <FontAwesome name="home" size={24} color="#000" />
-          <Text style={styles.iconLabel}>Home</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.iconBtn} onPress={() => navigation.navigate("More")}>
-          <FontAwesome name="ellipsis-h" size={24} color="#000" />
-          <Text style={styles.iconLabel}>More</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.iconBtn} onPress={() => navigation.navigate("Search")}>
-          <FontAwesome name="search" size={24} color="#000" />
-          <Text style={styles.iconLabel}>Search</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.iconBtn} onPress={() => navigation.navigate("Profile")}>
-          <FontAwesome name="user" size={24} color="#000" />
-          <Text style={styles.iconLabel}>Profile</Text>
-        </TouchableOpacity>
+        {bottomItems.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[
+              styles.iconBtn,
+              hoveredIcon === index && styles.iconBtnHovered
+            ]}
+            onPressIn={() => setHoveredIcon(index)}
+            onPressOut={() => setHoveredIcon(null)}
+            onPress={() => handleIconPress(index, item.label)}
+          >
+            <MaterialIcons 
+              name={item.icon} 
+              size={22} 
+              color={index === 0 && activeIcon === 0 ? "#e94560" : "#000"} 
+            />
+            <Text style={styles.iconLabel}>
+              {item.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );
 };
 
-export { TopNav, BottomNav, MoreScreen };
-
 const styles = StyleSheet.create({
   topContainer: {
-    backgroundColor: "#ffffffff",
-    paddingTop: Platform.OS === "ios" ? 80 : 40,
-    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "ios" ? 30 : 15,
+    paddingHorizontal: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
   },
   topBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingBottom: 8,
   },
-  logo: { width: 150, height: 60, resizeMode: "contain" },
+  logo: { 
+    width: 150, 
+    height: 60, 
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
   toggleBtn: {
-    padding: 10,
-    backgroundColor: "#e26512ff",
-    borderRadius: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#e94560",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    elevation: 3,
+  },
+  toggleIcon: {
+    marginRight: 6,
   },
   toggleText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  moreScreenContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  cardsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    padding: 16,
+    justifyContent: "space-between",
+  },
+  card: {
+    width: "48%",
+    aspectRatio: 1,
+    borderRadius: 20,
+    overflow: "hidden",
+    elevation: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    backgroundColor: "#fff",
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
+  },
+  cardHovered: {
+    transform: [{ scale: 1.03 }],
+    elevation: 12,
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    borderColor: "#e94560",
+  },
+  cardImage: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    resizeMode: "cover",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  overlayHovered: {
+    backgroundColor: "rgba(0,0,0,0.6)",
+  },
+  cardContent: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+  },
+  iconContainer: {
+    backgroundColor: "rgba(233, 69, 96, 0.2)",
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.3)",
+  },
+  cardIcon: {
+    textShadowColor: 'rgba(0,0,0,0.3)',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 3,
+  },
+  cardTitle: {
     fontSize: 16,
+    fontWeight: "800",
+    color: "#fff",
+    textAlign: "center",
+    marginBottom: 8,
+    textShadowColor: 'rgba(0,0,0,0.8)',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 8,
+    letterSpacing: 0.5,
+  },
+  cardDivider: {
+    width: 40,
+    height: 3,
+    backgroundColor: "#e94560",
+    marginVertical: 6,
+    borderRadius: 2,
+  },
+  subtitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 6,
+  },
+  cardSubtitle: {
+    fontSize: 12,
+    color: "#e94560",
+    fontWeight: "700",
+    marginRight: 4,
+    textShadowColor: 'rgba(0,0,0,0.3)',
+    textShadowOffset: {width: 0.5, height: 0.5},
+    textShadowRadius: 2,
+  },
+  arrowIcon: {
+    textShadowColor: 'rgba(0,0,0,0.3)',
+    textShadowOffset: {width: 0.5, height: 0.5},
+    textShadowRadius: 2,
   },
   bottomContainer: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
+    backgroundColor: "#fff",
+    elevation: 8,
   },
   bottomBar: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#fff",
-    paddingVertical: 10,
+    paddingVertical: 8,
     borderTopWidth: 1,
-    borderTopColor: "#ddd",
-    height: 60,
+    borderTopColor: "#eee",
   },
   iconBtn: {
-    alignItems: "center",
     flex: 1,
+    alignItems: "center",
+    paddingVertical: 8,
+  },
+  iconBtnHovered: {
+    transform: [{ scale: 1.05 }],
+    opacity: 0.95,
+    backgroundColor: "rgba(233, 69, 96, 0.1)",
+    borderRadius: 50,
+    padding: 10,
   },
   iconLabel: {
-    fontSize: 10,
+    fontSize: 12,
     color: "#666",
-    marginTop: 2,
-  },
-  moreScreenContainer: {
-    flex: 1,
-    backgroundColor: "#000",
-  },
-  cardsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  card: {
-    width: "48%",
-    height: 150,
-    marginBottom: 15,
-    borderRadius: 10,
-    overflow: "hidden",
-    position: "relative",
-  },
-  cardImage: {
-    flex: 1,
-    resizeMode: "cover",
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0,0,0,0.6)",
-  },
-  cardText: {
-    position: "absolute",
-    top: "50%",
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-    transform: [{ translateY: -10 }],
+    marginTop: 4,
+    fontWeight: "500",
   },
 });
+
+export { TopNav, BottomNav, MoreScreen };
